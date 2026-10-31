@@ -1,0 +1,28 @@
+[project]
+name = "clearcase-mcp-server"
+version = "0.1.0"
+description = "MCP server exposing clearcase operations as tools"
+requires-python = ">=3.10"
+dependencies = [
+    "fastmcp>=3.0.0",
+]
+
+[project.scripts]
+clearcase-mcp-server = "clearcase_mcp_server.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["clearcase_mcp_server"]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
